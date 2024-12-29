@@ -23,6 +23,16 @@ class statsScraper:
             writer = csv.writer(csvfile)
             writer.writerow(['Name', 'Team', 'Yards'])
             writer.writerows(data)
+            
+    def find_stat(self, tag: str,stat_name: str):
+        rows = self.parse_rows()
+        compiledStat = []
+        for row in rows:
+            stats = row.findAll(tag, {'data-stat': stat_name})
+            for index, stat in enumerate(stats):
+                cleanStat = stat.text.strip()
+                compiledStat.append(cleanStat)
+        return compiledStat
 
     
 
