@@ -21,7 +21,7 @@ class statsScraper:
     def write_csv(self, fileName: str, data: list, ):
         with open(fileName + '.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow(['Name', 'Team', 'Yards'])
+            writer.writerow(['Name', 'Team', 'Yards', 'Receptions', 'Targets', 'YardsPerReceptions', 'CatchPercentage', 'Touchdowns'])
             writer.writerows(data)
             
     def find_stat(self, tag: str,stat_name: str):
@@ -33,6 +33,7 @@ class statsScraper:
                 cleanStat = stat.text.strip()
                 compiledStat.append(cleanStat)
         return compiledStat
+
 
     
 
