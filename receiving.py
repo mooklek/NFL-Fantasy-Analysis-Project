@@ -5,7 +5,11 @@ import csv
 
 class receivingStats(statsScraper):
     def getStats(self):
-        self.fetch_page('receiving')
+        '''inputs receiving parameter into fetch_page() function in order to get values from the website'''
+
+        self.fetch_page('receiving') 
+        '''initalizes lists for each value for each player'''
+
         playerNames = []
         playerYards = []
         playerTeams = []
@@ -13,9 +17,11 @@ class receivingStats(statsScraper):
         playerYpR = []
         playerTar = [] 
         playerTD = []
-
+        playerAge = []
+        playerPos = []
         table_tag = 'td'
 
+        '''scrapes website using the html tags given on the website'''
         playerNames = self.find_stat(table_tag, 'name_display')
         playerTeams = self.find_stat(table_tag, 'team_name_abbr')
         playerYards = self.find_stat(table_tag, 'rec_yds')
@@ -24,13 +30,20 @@ class receivingStats(statsScraper):
         playerTar = self.find_stat(table_tag, 'targets')
         playerCatchPert = self.find_stat(table_tag, 'catch_pct')
         playerTD = self.find_stat(table_tag, 'rec_td')
+        playerAge = self.find_stat(table_tag, 'age')
+        playerPos = self.find_stat(table_tag, 'pos')
 
+        '''removes last row from playerYards because there's an empty row on the bottom of the website table'''
         playerYards = playerYards[0:len(playerYards) - 1]
         
-        sortedList = sorted(zip(playerNames, playerTeams, [int(x) for x in playerYards], playerRecs, playerTar, playerYpR, playerCatchPert, playerTD), key=lambda x: x[1], reverse = False) 
+        '''creating sortedList which includes all the data collected and is sorted by playerTeams first, playerYards second, then playerPos'''
+        sortedList = sorted(zip(playerNames, playerTeams, 
+                                [int(x) for x in playerYards], playerAge, playerPos, playerRecs, 
+                                playerTar, playerYpR, playerCatchPert, playerTD), key=lambda x: (x[1], -x[2], x[4]), reverse = False) 
 
-        for names, teams, yards, recs, targs, ypr, catchpert, touchdowns in sortedList: 
-            print(f'{names}, {teams}, {yards}, {recs}, {targs}, {ypr}, {catchpert}, {touchdowns}')
+        '''prints just to make sure that data is being receieved'''
+        for names, teams, ages, pos, yards, recs, targs, ypr, catchpert, touchdowns in sortedList: 
+            print(f'{names}, {teams}, {ages}, {pos}, {yards}, {recs}, {targs}, {ypr}, {catchpert}, {touchdowns}')
 
         return sortedList  
     

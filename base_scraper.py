@@ -18,10 +18,10 @@ class statsScraper:
         rows = self.doc.findAll('tr')
         return rows 
     
-    def write_csv(self, fileName: str, data: list, ):
+    def write_csv(self, fileName: str, csvRowNames: list, data: list):
         with open(fileName + '.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow(['Name', 'Team', 'Yards', 'Receptions', 'Targets', 'YardsPerReceptions', 'CatchPercentage', 'Touchdowns'])
+            writer.writerow(csvRowNames)
             writer.writerows(data)
             
     def find_stat(self, tag: str,stat_name: str):
