@@ -12,31 +12,9 @@ class receivingStats(statsScraper):
         playerRecs = []
         playerYpR = []
         playerTar = [] 
-        playerGames = []
-        playerGameStart = []
-        playerCatchPerc = []
         playerTD = []
 
         table_tag = 'td'
-
-        '''
-        for row in rows:
-            players = row.findAll('a', href=True)
-            for index, player in enumerate(players):
-                if index % 2 == 0:
-                    name = player.text.strip()
-                    playerNames.append(name)
-        
-            yards = row.findAll('td', {'data-stat': 'rec_yds'}) 
-            for index, totalYard in enumerate(yards):
-                yard = totalYard.text.strip()
-                playerYards.append(yard)
-
-            teams = row.findAll('td', {'data-stat': 'team_name_abbr'}) 
-            for index, teamName in enumerate(teams):
-                team = teamName.text.strip()
-                playerTeams.append(team)
-        '''
 
         playerNames = self.find_stat(table_tag, 'name_display')
         playerTeams = self.find_stat(table_tag, 'team_name_abbr')
