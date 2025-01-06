@@ -5,11 +5,11 @@ import csv
 
 class receivingStats(statsScraper):
     def getStats(self):
+
         '''inputs receiving parameter into fetch_page() function in order to get values from the website'''
-
         self.fetch_page('receiving') 
-        '''initalizes lists for each value for each player'''
 
+        '''initalizes lists for each value for each player'''
         playerNames = []
         playerYards = []
         playerTeams = []
