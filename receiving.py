@@ -8,17 +8,6 @@ class receivingStats(statsScraper):
 
         '''inputs receiving parameter into fetch_page() function in order to get values from the website'''
         self.fetch_page('receiving') 
-
-        '''initalizes lists for each value for each player'''
-        playerNames = []
-        playerYards = []
-        playerTeams = []
-        playerRecs = []
-        playerYpR = []
-        playerTar = [] 
-        playerTD = []
-        playerAge = []
-        playerPos = []
         table_tag = 'td'
 
         '''scrapes website using the html tags given on the website'''
@@ -44,6 +33,7 @@ class receivingStats(statsScraper):
         '''prints just to make sure that data is being receieved'''
         for names, teams, ages, pos, yards, recs, targs, ypr, catchpert, touchdowns in sortedList: 
             print(f'{names}, {teams}, {ages}, {pos}, {yards}, {recs}, {targs}, {ypr}, {catchpert}, {touchdowns}')
+        
 
         return sortedList  
     
