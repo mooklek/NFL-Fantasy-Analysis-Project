@@ -26,13 +26,13 @@ class receivingStats(statsScraper):
         playerYards = playerYards[0:len(playerYards) - 1]
         
         '''creating sortedList which includes all the data collected and is sorted by playerTeams first, playerYards second, then playerPos'''
-        sortedList = sorted(zip(playerNames, playerTeams, 
-                                [int(x) for x in playerYards], playerAge, playerPos, playerRecs, 
-                                playerTar, playerYpR, playerCatchPert, playerTD), key=lambda x: (x[1], -x[2], x[4]), reverse = False) 
+        sortedList = sorted(zip(playerNames, playerTeams, playerAge,
+                                [int(x) for x in playerYards], playerPos, playerRecs, 
+                                playerTar, playerYpR, playerCatchPert, playerTD), key=lambda x: (x[1], -x[3], x[2]), reverse = False) 
 
         '''prints just to make sure that data is being receieved'''
-        for names, teams, ages, pos, yards, recs, targs, ypr, catchpert, touchdowns in sortedList: 
-            print(f'{names}, {teams}, {ages}, {pos}, {yards}, {recs}, {targs}, {ypr}, {catchpert}, {touchdowns}')
+        for names, teams, ages, yards, pos, recs, targs, ypr, catchpert, touchdowns in sortedList: 
+            print(f'{names}, {teams}, {ages}, {yards}, {pos}, {recs}, {targs}, {ypr}, {catchpert}, {touchdowns}')
         
 
         return sortedList  
