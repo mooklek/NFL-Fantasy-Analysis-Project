@@ -4,7 +4,6 @@ Analysis project created in Python in order to better understand NFL players and
 
 # ToDo's
 
-- Construct Rushing CSV Files
 - Organize Files by Best Players and Best Players in Team
 - Create visual aid per team
 - Analyze data obviously
